@@ -34,11 +34,11 @@
 
         const mainBody = document.getElementById("MainBody");
         mainBody.innerHTML = "";
-        const appendable = document.createElement("div");
+        const appendable = document.createElement("ul");
         for (const link of links) {
           const element = document.createElement("a");
           element.href = link;
-          element.innerHTML = link + "<br/>";
+          element.innerHTML = "<li>" + link + "<br/></li>";
           appendable.appendChild(element);
         }
         mainBody.appendChild(appendable);
@@ -48,12 +48,12 @@
       }, 300);
     </script>
   </head>
-  <body style="font-size: 150%">
+  <body>
     <div>
-      <p>Id: <input id="JobId" value="21" /></p>
+      <p>Id: <input style="font-size: 150%" id="JobId" value="21" /></p>
       <p>
         TrackingParam:
-        <select id="TrackingParam">
+        <select style="font-size: 150%" id="TrackingParam">
           <option value="recommendation-deeplink">
             recommendation-deeplink
           </option>
@@ -62,7 +62,7 @@
       </p>
       <p>
         Type:
-        <select id="LinkType">
+        <select style="font-size: 150%" id="LinkType">
           <option value="staging">Staging</option>
           <option value="prod">Prod</option>
           <option value="random">Random</option>
