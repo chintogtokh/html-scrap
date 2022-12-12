@@ -51,13 +51,23 @@
   <body style="font-size: 150%">
     <div>
       <p>Id: <input id="JobId" value="21" /></p>
-      <p>TrackingParam: <input id="TrackingParam" value="email" /></p>
-      Type:
-      <select id="LinkType" value="staging">
-        <option value="staging">Staging</option>
-        <option value="prod">Prod</option>
-        <option value="random">Random</option>
-      </select>
+      <p>
+        TrackingParam:
+        <select id="TrackingParam">
+          <option value="recommendation-deeplink">
+            recommendation-deeplink
+          </option>
+          <option value="dashboard-deeplink">dashboard-deeplink</option>
+        </select>
+      </p>
+      <p>
+        Type:
+        <select id="LinkType">
+          <option value="staging">Staging</option>
+          <option value="prod">Prod</option>
+          <option value="random">Random</option>
+        </select>
+      </p>
       <button onclick="setup()">Reset</button>
     </div>
 
