@@ -1,121 +1,66 @@
 <html>
+  <head>
+    <script>
+      setup = () => {
+        const id = document.getElementById("JobId").value;
+        const linkType = document.getElementById("LinkType").value;
+        const trackingParam = document.getElementById("TrackingParam").value;
+        const linkTypes = {
+          staging: "master.staging.getsidekicker.com",
+          prod: "app.sidekicker.com",
+          random: "dasdas.staging.getsidekicker.com",
+        };
+        const links = [
+          `sidekicker://${linkTypes[linkType]}/dashboard/projects/open`,
+          `sidekicker://${linkTypes[linkType]}/job/show/${id}`,
+          `sidekicker://${linkTypes[linkType]}/worker/opportunities/${id}`,
+          `sidekicker://${linkTypes[linkType]}/opportunities/${id}`,
+          ``,
+          `https://${linkTypes[linkType]}/dashboard/projects/open`,
+          `https://${linkTypes[linkType]}/job/show/${id}`,
+          `https://${linkTypes[linkType]}/worker/opportunities/${id}`,
+          `https://${linkTypes[linkType]}/opportunities/${id}`,
+          ``,
+          `sidekicker://${linkTypes[linkType]}/dashboard/projects/open?source=${trackingParam}`,
+          `sidekicker://${linkTypes[linkType]}/job/show/${id}?source=${trackingParam}`,
+          `sidekicker://${linkTypes[linkType]}/worker/opportunities/${id}?source=${trackingParam}`,
+          `sidekicker://${linkTypes[linkType]}/opportunities/${id}?source=${trackingParam}`,
+          ``,
+          `https://${linkTypes[linkType]}/dashboard/projects/open?source=${trackingParam}`,
+          `https://${linkTypes[linkType]}/job/show/${id}?source=${trackingParam}`,
+          `https://${linkTypes[linkType]}/worker/opportunities/${id}?source=${trackingParam}`,
+          `https://${linkTypes[linkType]}/opportunities/${id}?source=${trackingParam}`,
+        ];
+
+        const mainBody = document.getElementById("MainBody");
+        mainBody.innerHTML = "";
+        const appendable = document.createElement("div");
+        for (const link of links) {
+          const element = document.createElement("a");
+          element.href = link;
+          element.innerHTML = link + "<br/>";
+          appendable.appendChild(element);
+        }
+        mainBody.appendChild(appendable);
+      };
+      setTimeout(() => {
+        setup();
+      }, 300);
+    </script>
+  </head>
   <body style="font-size: 150%">
     <div>
-      <h1>Dash link</h1>
-
-      <a href="sidekicker://app.sidekicker.com/dashboard/projects/open"
-        >sidekicker://app.sidekicker.com/dashboard/projects/open</a
-      >
-      <br />
-      <a href="https://app.sidekicker.com/dashboard/projects/open"
-        >https://app.sidekicker.com/dashboard/projects/open</a
-      >
+      <p>Id: <input id="JobId" value="21" /></p>
+      <p>TrackingParam: <input id="TrackingParam" value="email" /></p>
+      Type:
+      <select id="LinkType" value="staging">
+        <option value="staging">Staging</option>
+        <option value="prod">Prod</option>
+        <option value="random">Random</option>
+      </select>
+      <button onclick="setup()">Reset</button>
     </div>
 
-    <div>
-      <h1>Use app.sidekicker with yogesh+stest3</h1>
-
-      <a href="sidekicker://app.sidekicker.com/job/show/333"
-        >sidekicker://app.sidekicker.com/job/show/333</a
-      >
-      <br />
-      <a href="https://app.sidekicker.com/job/show/333"
-        >https://app.sidekicker.com/job/show/333</a
-      >
-    </div>
-
-    <div>
-      <h1>Use master.staging without</h1>
-
-      <a href="sidekicker://master.staging.sidekicker.com/job/show/203"
-        >sidekicker://master.staging.sidekicker.com/job/show/203</a
-      >
-      <br />
-      <a href="https://master.staging.getsidekicker.com/job/show/203"
-        >https://master.staging.getsidekicker.com/job/show/203</a
-      >
-    </div>
-
-    <div>
-      <h1>Use master.staging</h1>
-
-      <a
-        href="sidekicker://master.staging.sidekicker.com/job/show/42?from=email"
-        >sidekicker://master.staging.sidekicker.com/job/show/42?from=email</a
-      >
-      <br />
-      <a href="https://master.staging.getsidekicker.com/job/show/42?from=popup"
-        >https://master.staging.getsidekicker.com/job/show/42?from=popup</a
-      >
-    </div>
-
-    <div>
-      <h1>bad url</h1>
-
-      <a href="sidekicker://app.sidekicker.com/josb/show/105"
-        >sidekicker://app.sidekicker.com/josb/show/105</a
-      >
-      <br />
-      <a href="https://app.sidekicker.com/worker/daaa"
-        >https://app.sidekicker.com/worker/daaa</a
-      >
-    </div>
-
-    <div>
-      <h1>bad url stagting</h1>
-
-      <a href="sidekicker://master.staging.getsidekicker.com/josb/show/105"
-        >sidekicker://master.staging.getsidekicker.com/josb/show/105</a
-      >
-      <br />
-      <a href="https://master.staging.getsidekicker.com/worker/opportunities"
-        >https://master.staging.getsidekicker.com/worker/opportunities</a
-      >
-    </div>
-
-    <div>
-      <h1>Random</h1>
-
-      <a href="sidekicker://random.staging.sidekicker.com/job/show/105"
-        >sidekicker://random.staging.sidekicker.com/job/show/105</a
-      >
-      <br />
-      <a href="https://random.staging.getsidekicker.com/job/show/105"
-        >https://random.staging.getsidekicker.com/job/show/105</a
-      >
-    </div>
-
-    <div>
-      <h1>Use getsidekicker</h1>
-
-      <a href="sidekicker://www.getsidekicker.com/job/show/55"
-        >sidekicker://www.getsidekicker.com/job/show/55</a
-      >
-      <br />
-      <a href="https://www.getsidekicker.com/job/show/55"
-        >https://www.getsidekicker.com/job/show/55</a
-      >
-    </div>
-
-    <div>
-      <h1>Use fakesidekicker</h1>
-
-      <a href="sidekicker://www.fakesidekicker.com/job/show/55"
-        >sidekicker://www.fakesidekicker.com/job/show/55</a
-      >
-      <br />
-      <a href="https://www.fakesidekicker.com/job/show/55"
-        >https://www.fakesidekicker.com/job/show/55</a
-      >
-    </div>
-
-    <div>
-      <h1>Use unrelated link</h1>
-
-      <a href="sidekicker://foo.com/job/show/55"
-        >sidekicker://foo.com/job/show/55</a
-      >
-      <br />
-    </div>
+    <div id="MainBody"></div>
   </body>
 </html>
