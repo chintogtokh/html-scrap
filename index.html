@@ -21,15 +21,15 @@
           `https://${linkTypes[linkType]}/worker/opportunities/${id}`,
           `https://${linkTypes[linkType]}/opportunities/${id}`,
           ``,
-          `sidekicker://${linkTypes[linkType]}/dashboard/projects/open?source=${trackingParam}`,
-          `sidekicker://${linkTypes[linkType]}/job/show/${id}?source=${trackingParam}`,
-          `sidekicker://${linkTypes[linkType]}/worker/opportunities/${id}?source=${trackingParam}`,
-          `sidekicker://${linkTypes[linkType]}/opportunities/${id}?source=${trackingParam}`,
+          `sidekicker://${linkTypes[linkType]}/dashboard/projects/open?from=${trackingParam}`,
+          `sidekicker://${linkTypes[linkType]}/job/show/${id}?from=${trackingParam}`,
+          `sidekicker://${linkTypes[linkType]}/worker/opportunities/${id}?from=${trackingParam}`,
+          `sidekicker://${linkTypes[linkType]}/opportunities/${id}?from=${trackingParam}`,
           ``,
-          `https://${linkTypes[linkType]}/dashboard/projects/open?source=${trackingParam}`,
-          `https://${linkTypes[linkType]}/job/show/${id}?source=${trackingParam}`,
-          `https://${linkTypes[linkType]}/worker/opportunities/${id}?source=${trackingParam}`,
-          `https://${linkTypes[linkType]}/opportunities/${id}?source=${trackingParam}`,
+          `https://${linkTypes[linkType]}/dashboard/projects/open?from=${trackingParam}`,
+          `https://${linkTypes[linkType]}/job/show/${id}?from=${trackingParam}`,
+          `https://${linkTypes[linkType]}/worker/opportunities/${id}?from=${trackingParam}`,
+          `https://${linkTypes[linkType]}/opportunities/${id}?from=${trackingParam}`,
         ];
 
         const mainBody = document.getElementById("MainBody");
@@ -54,10 +54,8 @@
       <p>
         TrackingParam:
         <select style="font-size: 150%" id="TrackingParam">
-          <option value="recommendation-deeplink">
-            recommendation-deeplink
-          </option>
-          <option value="dashboard-deeplink">dashboard-deeplink</option>
+          <option value="email">email</option>
+          <option value="sms">sms</option>
         </select>
       </p>
       <p>
