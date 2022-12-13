@@ -17,24 +17,32 @@
             `sidekicker://${linkTypes[linkType]}/job/show/${id}`,
             `sidekicker://${linkTypes[linkType]}/worker/opportunities/${id}`,
             `sidekicker://${linkTypes[linkType]}/opportunities/${id}`,
+            `sidekicker://${linkTypes[linkType]}/other`,
+            `sidekicker://${linkTypes[linkType]}`,
           ],
           [
             `https://${linkTypes[linkType]}/dashboard/projects/open`,
             `https://${linkTypes[linkType]}/job/show/${id}`,
             `https://${linkTypes[linkType]}/worker/opportunities/${id}`,
             `https://${linkTypes[linkType]}/opportunities/${id}`,
+            `https://${linkTypes[linkType]}/other`,
+            `https://${linkTypes[linkType]}`,
           ],
           [
             `sidekicker://${linkTypes[linkType]}/dashboard/projects/open?utm_medium=${trackingParam}`,
             `sidekicker://${linkTypes[linkType]}/job/show/${id}?utm_medium=${trackingParam}`,
             `sidekicker://${linkTypes[linkType]}/worker/opportunities/${id}?utm_medium=${trackingParam}`,
             `sidekicker://${linkTypes[linkType]}/opportunities/${id}?utm_medium=${trackingParam}`,
+            `sidekicker://${linkTypes[linkType]}/other?utm_medium=${trackingParam}`,
+            `sidekicker://${linkTypes[linkType]}?utm_medium=${trackingParam}`,
           ],
           [
             `https://${linkTypes[linkType]}/dashboard/projects/open?utm_medium=${trackingParam}`,
             `https://${linkTypes[linkType]}/job/show/${id}?utm_medium=${trackingParam}`,
             `https://${linkTypes[linkType]}/worker/opportunities/${id}?utm_medium=${trackingParam}`,
             `https://${linkTypes[linkType]}/opportunities/${id}?utm_medium=${trackingParam}`,
+            `https://${linkTypes[linkType]}/other?utm_medium=${trackingParam}`,
+            `https://${linkTypes[linkType]}?utm_medium=${trackingParam}`,
           ],
         ];
 
@@ -65,16 +73,22 @@
             let linkName = "";
             switch (i) {
               case 0:
-                linkName = " DASH ";
+                linkName = "DASH";
                 break;
               case 1:
-                linkName = " JOB ";
+                linkName = "JOB";
                 break;
               case 2:
-                linkName = " OPP ";
+                linkName = "OPP";
                 break;
               case 3:
-                linkName = " OPPALT ";
+                linkName = "OPPALT";
+                break;
+              case 4:
+                linkName = "OTHER";
+                break;
+              case 5:
+                linkName = "ROOT";
                 break;
             }
             const element = document.createElement("td");
