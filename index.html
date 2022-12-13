@@ -25,16 +25,16 @@
             `https://${linkTypes[linkType]}/opportunities/${id}`,
           ],
           [
-            `sidekicker://${linkTypes[linkType]}/dashboard/projects/open?from=${trackingParam}`,
-            `sidekicker://${linkTypes[linkType]}/job/show/${id}?from=${trackingParam}`,
-            `sidekicker://${linkTypes[linkType]}/worker/opportunities/${id}?from=${trackingParam}`,
-            `sidekicker://${linkTypes[linkType]}/opportunities/${id}?from=${trackingParam}`,
+            `sidekicker://${linkTypes[linkType]}/dashboard/projects/open?utm_medium=${trackingParam}`,
+            `sidekicker://${linkTypes[linkType]}/job/show/${id}?utm_medium=${trackingParam}`,
+            `sidekicker://${linkTypes[linkType]}/worker/opportunities/${id}?utm_medium=${trackingParam}`,
+            `sidekicker://${linkTypes[linkType]}/opportunities/${id}?utm_medium=${trackingParam}`,
           ],
           [
-            `https://${linkTypes[linkType]}/dashboard/projects/open?from=${trackingParam}`,
-            `https://${linkTypes[linkType]}/job/show/${id}?from=${trackingParam}`,
-            `https://${linkTypes[linkType]}/worker/opportunities/${id}?from=${trackingParam}`,
-            `https://${linkTypes[linkType]}/opportunities/${id}?from=${trackingParam}`,
+            `https://${linkTypes[linkType]}/dashboard/projects/open?utm_medium=${trackingParam}`,
+            `https://${linkTypes[linkType]}/job/show/${id}?utm_medium=${trackingParam}`,
+            `https://${linkTypes[linkType]}/worker/opportunities/${id}?utm_medium=${trackingParam}`,
+            `https://${linkTypes[linkType]}/opportunities/${id}?utm_medium=${trackingParam}`,
           ],
         ];
 
@@ -52,10 +52,10 @@
               groupName = "https://";
               break;
             case 2:
-              groupName = "sk://...?from=";
+              groupName = "sk://...?utm_medium=";
               break;
             case 3:
-              groupName = "https://...?from=";
+              groupName = "https://...?utm_medium=";
               break;
           }
           const element = document.createElement("td");
