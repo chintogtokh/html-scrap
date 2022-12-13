@@ -1,5 +1,6 @@
 <html>
   <head>
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
     <script>
       setup = () => {
         const id = document.getElementById("JobId").value;
@@ -10,38 +11,83 @@
           prod: "app.sidekicker.com",
           random: "dasdas.staging.getsidekicker.com",
         };
-        const links = [
-          `sidekicker://${linkTypes[linkType]}/dashboard/projects/open`,
-          `sidekicker://${linkTypes[linkType]}/job/show/${id}`,
-          `sidekicker://${linkTypes[linkType]}/worker/opportunities/${id}`,
-          `sidekicker://${linkTypes[linkType]}/opportunities/${id}`,
-          ``,
-          `https://${linkTypes[linkType]}/dashboard/projects/open`,
-          `https://${linkTypes[linkType]}/job/show/${id}`,
-          `https://${linkTypes[linkType]}/worker/opportunities/${id}`,
-          `https://${linkTypes[linkType]}/opportunities/${id}`,
-          ``,
-          `sidekicker://${linkTypes[linkType]}/dashboard/projects/open?from=${trackingParam}`,
-          `sidekicker://${linkTypes[linkType]}/job/show/${id}?from=${trackingParam}`,
-          `sidekicker://${linkTypes[linkType]}/worker/opportunities/${id}?from=${trackingParam}`,
-          `sidekicker://${linkTypes[linkType]}/opportunities/${id}?from=${trackingParam}`,
-          ``,
-          `https://${linkTypes[linkType]}/dashboard/projects/open?from=${trackingParam}`,
-          `https://${linkTypes[linkType]}/job/show/${id}?from=${trackingParam}`,
-          `https://${linkTypes[linkType]}/worker/opportunities/${id}?from=${trackingParam}`,
-          `https://${linkTypes[linkType]}/opportunities/${id}?from=${trackingParam}`,
+        const linkGroups = [
+          [
+            `sidekicker://${linkTypes[linkType]}/dashboard/projects/open`,
+            `sidekicker://${linkTypes[linkType]}/job/show/${id}`,
+            `sidekicker://${linkTypes[linkType]}/worker/opportunities/${id}`,
+            `sidekicker://${linkTypes[linkType]}/opportunities/${id}`,
+          ],
+          [
+            `https://${linkTypes[linkType]}/dashboard/projects/open`,
+            `https://${linkTypes[linkType]}/job/show/${id}`,
+            `https://${linkTypes[linkType]}/worker/opportunities/${id}`,
+            `https://${linkTypes[linkType]}/opportunities/${id}`,
+          ],
+          [
+            `sidekicker://${linkTypes[linkType]}/dashboard/projects/open?from=${trackingParam}`,
+            `sidekicker://${linkTypes[linkType]}/job/show/${id}?from=${trackingParam}`,
+            `sidekicker://${linkTypes[linkType]}/worker/opportunities/${id}?from=${trackingParam}`,
+            `sidekicker://${linkTypes[linkType]}/opportunities/${id}?from=${trackingParam}`,
+          ],
+          [
+            `https://${linkTypes[linkType]}/dashboard/projects/open?from=${trackingParam}`,
+            `https://${linkTypes[linkType]}/job/show/${id}?from=${trackingParam}`,
+            `https://${linkTypes[linkType]}/worker/opportunities/${id}?from=${trackingParam}`,
+            `https://${linkTypes[linkType]}/opportunities/${id}?from=${trackingParam}`,
+          ],
         ];
 
         const mainBody = document.getElementById("MainBody");
         mainBody.innerHTML = "";
-        const appendable = document.createElement("ul");
-        for (const link of links) {
-          const element = document.createElement("a");
-          element.href = link;
-          element.innerHTML = "<li>" + link + "<br/></li>";
+        const appendableTable = document.createElement("table");
+        for (const [i, linkGroup] of linkGroups.entries()) {
+          const appendable = document.createElement("tr");
+          let groupName = "";
+          switch (i) {
+            case 0:
+              groupName = "sk://";
+              break;
+            case 1:
+              groupName = "https://";
+              break;
+            case 2:
+              groupName = "sk://...?from=";
+              break;
+            case 3:
+              groupName = "https://...?from=";
+              break;
+          }
+          const element = document.createElement("td");
+          element.innerHTML = groupName;
           appendable.appendChild(element);
+          for (const [i, link] of linkGroup.entries()) {
+            let linkName = "";
+            switch (i) {
+              case 0:
+                linkName = " DASH ";
+                break;
+              case 1:
+                linkName = " JOB ";
+                break;
+              case 2:
+                linkName = " OPP ";
+                break;
+              case 3:
+                linkName = " OPPALT ";
+                break;
+            }
+            const element = document.createElement("td");
+            const aElement = document.createElement("a");
+            aElement.href = link;
+            aElement.style = "width:20px";
+            aElement.innerHTML = linkName;
+            element.appendChild(aElement);
+            appendable.appendChild(element);
+          }
+          appendableTable.appendChild(appendable);
         }
-        mainBody.appendChild(appendable);
+        mainBody.appendChild(appendableTable);
       };
       setTimeout(() => {
         setup();
@@ -66,7 +112,7 @@
           <option value="random">Random</option>
         </select>
       </p>
-      <button onclick="setup()">Reset</button>
+      <button style="font-size: 150%" onclick="setup()">Reset</button>
     </div>
 
     <div id="MainBody"></div>
